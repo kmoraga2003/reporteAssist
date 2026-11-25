@@ -13,7 +13,11 @@ android {
     defaultConfig {
         applicationId "com.quimica.reportassist"
         minSdk 26
-        targetSdk 36
+        targetSdk {
+            version = release(36) {
+                minorApiLevel = 1
+            }
+        }
         versionCode 1
         versionName "1.0"
 
