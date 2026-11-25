@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta Corporativa Empresa Química -->
+    <color name="primary">#0F2C59</color>
+    <color name="primary_dark">#071936</color>
+    <color name="primary_light">#1D4ED8</color>
+    <color name="secondary">#0284C7</color>
+    <color name="accent_cyan">#06B6D4</color>
+    
+    <!-- Estados de Asistencia -->
+    <color name="status_ontime">#10B981</color>
+    <color name="status_ontime_bg">#D1FAE5</color>
+    <color name="status_late">#F59E0B</color>
+    <color name="status_late_bg">#FEF3C7</color>
+    <color name="status_absent">#EF4444</color>
+    <color name="status_absent_bg">#FEE2E2</color>
+    <color name="status_early">#8B5CF6</color>
+    <color name="status_early_bg">#EDE9FE</color>
+
+    <!-- Fondos y Textos -->
+    <color name="background_light">#F8FAFC</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="card_border">#E2E8F0</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_muted">#94A3B8</color>
+    <color name="divider">#E2E8F0</color>
+</resources>

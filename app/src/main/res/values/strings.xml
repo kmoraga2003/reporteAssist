@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">ReportAssist</string>
+    <string name="company_name">Química del Sur S.A.</string>
+    <string name="app_tagline">Control de Asistencia en Tiempo Real</string>
+    
+    <!-- Login -->
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="email_hint">Correo institucional</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="server_ip_hint">IP del Servidor (Ej: 10.0.2.2:8080)</string>
+    <string name="btn_login">Acceder al Sistema</string>
+    <string name="quick_login_title">Cuentas rápidas de prueba:</string>
+    <string name="quick_admin">Admin General</string>
+    <string name="quick_emp1">Carlos Silva (Planta)</string>
+    <string name="quick_emp2">María González (Calidad)</string>
+    
+    <!-- Admin Dashboard -->
+    <string name="admin_title">Reportes de Asistencia</string>
+    <string name="tab_late">⏰ Atrasos</string>
+    <string name="tab_early">🚪 Salidas Temp.</string>
+    <string name="tab_absent">❌ Inasistencias</string>
+    <string name="realtime_indicator">● En Vivo (Auto-refresco 5s)</string>
+    <string name="empty_reports">No se registran incidencias para este reporte</string>
+    
+    <!-- Empleado -->
+    <string name="emp_title">Mi Asistencia</string>
+    <string name="today_record_title">Estado de Mi Jornada Hoy</string>
+    <string name="history_title">Historial de Mis Asistencias</string>
+    <string name="check_in_label">Entrada:</string>
+    <string name="check_out_label">Salida:</string>
+    <string name="btn_logout">Cerrar Sesión</string>
+</resources>
