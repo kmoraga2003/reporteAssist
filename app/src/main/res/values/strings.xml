@@ -29,4 +29,12 @@
     <string name="check_in_label">Entrada:</string>
     <string name="check_out_label">Salida:</string>
     <string name="btn_logout">Cerrar Sesión</string>
+
+    <!-- Biometría -->
+    <string name="btn_biometric">👆 Acceder con Huella Digital</string>
+    <string name="biometric_title">Autenticación Biométrica</string>
+    <string name="biometric_subtitle">Escanea tu huella dactilar para ingresar al sistema</string>
+    <string name="biometric_negative">Cancelar / Usar Contraseña</string>
+    <string name="biometric_failed">Autenticación biométrica no reconocida.</string>
+    <string name="biometric_error">Error biométrico: %s</string>
 </resources>
