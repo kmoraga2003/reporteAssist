@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_cyan">#06B6D4</color>
+    <color name="background_light">#F8FAFC</color>
+    <color name="card_border">#E2E8F0</color>
+    <color name="divider">#E2E8F0</color>
+    <color name="primary">#0F2C59</color>
+    <color name="primary_dark">#071936</color>
+    <color name="primary_light">#1D4ED8</color>
+    <color name="secondary">#0284C7</color>
+    <color name="status_absent">#EF4444</color>
+    <color name="status_absent_bg">#FEE2E2</color>
+    <color name="status_early">#8B5CF6</color>
+    <color name="status_early_bg">#EDE9FE</color>
+    <color name="status_late">#F59E0B</color>
+    <color name="status_late_bg">#FEF3C7</color>
+    <color name="status_ontime">#10B981</color>
+    <color name="status_ontime_bg">#D1FAE5</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="text_muted">#94A3B8</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#64748B</color>
+    <string name="admin_title">Reportes de Asistencia</string>
+    <string name="app_name">ReportAssist</string>
+    <string name="app_tagline">Control de Asistencia en Tiempo Real</string>
+    <string name="btn_login">Acceder al Sistema</string>
+    <string name="btn_logout">Cerrar Sesión</string>
+    <string name="check_in_label">Entrada:</string>
+    <string name="check_out_label">Salida:</string>
+    <string name="company_name">Química del Sur S.A.</string>
+    <string name="email_hint">Correo institucional</string>
+    <string name="emp_title">Mi Asistencia</string>
+    <string name="empty_reports">No se registran incidencias para este reporte</string>
+    <string name="history_title">Historial de Mis Asistencias</string>
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="quick_admin">Admin General</string>
+    <string name="quick_emp1">Carlos Silva (Planta)</string>
+    <string name="quick_emp2">María González (Calidad)</string>
+    <string name="quick_login_title">Cuentas rápidas de prueba:</string>
+    <string name="realtime_indicator">● En Vivo (Auto-refresco 5s)</string>
+    <string name="server_ip_hint">IP del Servidor (Ej: 10.0.2.2:8080)</string>
+    <string name="tab_absent">❌ Inasistencias</string>
+    <string name="tab_early">🚪 Salidas Temp.</string>
+    <string name="tab_late">⏰ Atrasos</string>
+    <string name="today_record_title">Estado de Mi Jornada Hoy</string>
+    <style name="Theme.ReportAssist" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/surface_white</item>
+        
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/primary_light</item>
+        <item name="colorOnSecondary">@color/surface_white</item>
+        
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        
+        <item name="android:windowBackground">@color/background_light</item>
+    </style>
+</resources>
