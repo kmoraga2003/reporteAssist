@@ -143,6 +143,19 @@
                     android:textStyle="bold"
                     app:cornerRadius="10dp" />
 
+                <!-- Botón Biométrico (Se muestra solo si el dispositivo soporta y tiene configurada huella) -->
+                <Button
+                    android:id="@+id/btnBiometric"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#0F766E"
+                    android:text="@string/btn_biometric"
+                    android:textColor="@color/surface_white"
+                    android:textSize="13sp"
+                    android:visibility="gone"
+                    app:cornerRadius="10dp" />
+
                 <!-- ProgressBar -->
                 <ProgressBar
                     android:id="@+id/progressBar"
