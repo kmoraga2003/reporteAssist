@@ -7,7 +7,11 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.quimica.reportassist.R;
@@ -17,6 +21,8 @@ import com.quimica.reportassist.model.LoginRequest;
 import com.quimica.reportassist.model.LoginResponse;
 import com.quimica.reportassist.util.SessionManager;
 
+import java.util.concurrent.Executor;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,9 +30,12 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText etEmail, etPassword, etServerIp;
-    private Button btnLogin, btnQuickAdmin, btnQuickEmp1, btnQuickEmp2;
+    private Button btnLogin, btnBiometric, btnQuickAdmin, btnQuickEmp1, btnQuickEmp2;
     private ProgressBar progressBar;
     private SessionManager sessionManager;
+
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
         initViews();
         setupEvents();
+        setupBiometrics();
     }
 
     private void initViews() {
@@ -50,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         etServerIp = findViewById(R.id.etServerIp);
         btnLogin = findViewById(R.id.btnLogin);
+        btnBiometric = findViewById(R.id.btnBiometric);
         btnQuickAdmin = findViewById(R.id.btnQuickAdmin);
         btnQuickEmp1 = findViewById(R.id.btnQuickEmp1);
         btnQuickEmp2 = findViewById(R.id.btnQuickEmp2);
@@ -61,7 +72,13 @@ public class LoginActivity extends AppCompatActivity {
     private void setupEvents() {
         btnLogin.setOnClickListener(v -> performLogin());
 
-        // Accesos rápidos para demos y presentación ante el profesor
+        btnBiometric.setOnClickListener(v -> {
+            if (biometricPrompt != null && promptInfo != null) {
+                biometricPrompt.authenticate(promptInfo);
+            }
+        });
+
+        // Accesos rápidos para demos
         btnQuickAdmin.setOnClickListener(v -> {
             etEmail.setText("admin@quimica.cl");
             etPassword.setText("admin123");
@@ -76,6 +93,51 @@ public class LoginActivity extends AppCompatActivity {
             etEmail.setText("maria.gonzalez@quimica.cl");
             etPassword.setText("123456");
         });
+    }
+
+    private void setupBiometrics() {
+        BiometricManager biometricManager = BiometricManager.from(this);
+        int canAuthenticate = biometricManager.canAuthenticate(
+                BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.BIOMETRIC_WEAK
+        );
+
+        if (canAuthenticate == BiometricManager.BIOMETRIC_SUCCESS) {
+            btnBiometric.setVisibility(View.VISIBLE);
+
+            Executor executor = ContextCompat.getMainExecutor(this);
+            biometricPrompt = new BiometricPrompt(LoginActivity.this, executor, new BiometricPrompt.AuthenticationCallback() {
+                @Override
+                public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                    super.onAuthenticationError(errorCode, errString);
+                    if (errorCode != BiometricPrompt.ERROR_NEGATIVE_BUTTON && errorCode != BiometricPrompt.ERROR_USER_CANCELED) {
+                        Toast.makeText(LoginActivity.this, getString(R.string.biometric_error, errString), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                    super.onAuthenticationSucceeded(result);
+                    Toast.makeText(LoginActivity.this, "¡Autenticación biométrica exitosa!", Toast.LENGTH_SHORT).show();
+                    performLogin();
+                }
+
+                @Override
+                public void onAuthenticationFailed() {
+                    super.onAuthenticationFailed();
+                    Toast.makeText(LoginActivity.this, getString(R.string.biometric_failed), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                    .setTitle(getString(R.string.biometric_title))
+                    .setSubtitle(getString(R.string.biometric_subtitle))
+                    .setNegativeButtonText(getString(R.string.biometric_negative))
+                    .setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_STRONG | BiometricManager.Authenticators.BIOMETRIC_WEAK)
+                    .build();
+        } else {
+            // Si el hardware no lo soporta o no hay huella registrada, se mantiene oculto sin afectar nada
+            btnBiometric.setVisibility(View.GONE);
+        }
     }
 
     private void performLogin() {
